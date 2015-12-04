@@ -31,12 +31,16 @@ class MineSweeper
     puts "Enter Position (start with \"F\" to flag)"
     input = gets.chomp.downcase
     if input[0] == "f"
-      board.flag(input[2..-1].split(",").to_a.map(&:to_i))
+      board.flag(parse_input(input[2..-1]))
     else
-      board.reveal(input.split(",").to_a.map(&:to_i))
+      board.reveal(parse_input(input))
     end
   end
 
+  def parse_input(pos)
+    new_position = pos.split(",").to_a.map(&:to_i)
+    new_position.map { |el| el - 1 }
+  end
 
 end
 

@@ -45,7 +45,7 @@ class Tile
   end
 
   def flag!
-    flagged = !flagged
+    flagged? ? self.flagged = false : self.flagged = true
   end
 
   def reveal!
@@ -63,7 +63,7 @@ class Tile
   end
 
   def flagged?
-    @flagged
+    flagged
   end
 
   def bomb?
@@ -73,7 +73,7 @@ class Tile
   def inspect
     if hidden?
       if flagged?
-        "F".g
+        "F".magenta
       else
         "_".gray
       end

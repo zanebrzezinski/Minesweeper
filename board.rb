@@ -74,7 +74,6 @@ class Board
   end
 
   def flag(pos)
-
     self[pos].flag!
     render
 
@@ -83,7 +82,10 @@ class Board
   def render
     system("clear")
     puts
-    grid.each do |row|
+    print " "
+    p ((1..size).to_a)
+    grid.each_with_index do |row, idx|
+      print idx+1
       p row
     end
   end
