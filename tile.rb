@@ -41,9 +41,11 @@ class Tile
   end
 
   def in_bounds?(position)
-
     position.all? { |el| el.between?(0, board.size - 1)}
+  end
 
+  def flag!
+    flagged = !flagged
   end
 
   def reveal!

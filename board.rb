@@ -73,6 +73,13 @@ class Board
 
   end
 
+  def flag(pos)
+
+    self[pos].flag!
+    render
+
+  end
+
   def render
     system("clear")
     puts
@@ -88,7 +95,7 @@ class Board
   end
 
   def lost?
-    bomb_positions.any? { |tile| tile.revealed? }
+    bomb_positions.any? { |pos| self[pos].revealed? }
   end
 
 end
