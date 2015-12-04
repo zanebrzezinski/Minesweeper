@@ -56,6 +56,10 @@ class Tile
     @bomb
   end
 
+  def inspect
+    self.position
+  end
+
 
 
 end
