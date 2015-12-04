@@ -19,7 +19,6 @@ class Board
     bombs = bomb_locations
 
     grid.each_with_index do |row, y|
-      debugger
       row.each_with_index do |el, x|
         if bombs.include?([x, y])
           self[[x, y]] = Tile.new([x, y], self, true)
@@ -49,6 +48,14 @@ class Board
   def []=(pos, value)
     x, y = pos
     grid[y][x] = value
+  end
+
+  def render
+    system("clear")
+    puts
+    grid.each do |row|
+      p row
+    end
   end
 
 end

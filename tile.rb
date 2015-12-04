@@ -15,7 +15,7 @@ class Tile
 
 
   attr_accessor :hidden, :flagged
-  attr_reader :board, :position
+  attr_reader :board, :position, :bomb
 
   def initialize(position, board, bomb = false)
     @bomb = bomb
@@ -57,7 +57,7 @@ class Tile
   end
 
   def inspect
-    self.position
+    bomb ? "b" : "_"
   end
 
 
