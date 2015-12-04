@@ -3,14 +3,14 @@ require 'byebug'
 class Tile
 
   DELTAS = [
-    [ 0, 1],
-    [ 1, 1],
-    [ 1, 0],
-    [ 1,-1],
-    [ 0,-1],
-    [-1,-1],
-    [-1, 0],
-    [-1, 1]
+    [ 0,  1],
+    [ 1,  1],
+    [ 1,  0],
+    [ 1, -1],
+    [ 0, -1],
+    [-1, -1],
+    [-1,  0],
+    [-1,  1]
   ]
 
 
@@ -26,15 +26,12 @@ class Tile
   end
 
   def neighbors
-
-
     neighbors = DELTAS.map do |delta|
-                        new_position = [
-                          self.position[0] + delta[0],
-                          self.position[1] + delta[1]
-                        ]
+      new_position = [
+        self.position[0] + delta[0],
+        self.position[1] + delta[1]
+      ]
     end.select { |el| in_bounds?(el) }
-
   end
 
   def in_bounds?(position)
