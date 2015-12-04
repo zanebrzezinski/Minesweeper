@@ -2,17 +2,16 @@ require 'byebug'
 
 class Tile
 
-  attr_accessor :hidden?, :flag?
+  attr_accessor :hidden, :flag
 
   def initialize(bomb = false)
-    @bomb? = bomb
-    @hidden? = true
-    @flagged? = false
+    @bomb = bomb
+    @hidden = true
+    @flagged = false
   end
 
-  def reveal
-    
-
+  def reveal!
+    self.hidden = false
   end
 
 
