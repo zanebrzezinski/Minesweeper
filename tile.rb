@@ -32,6 +32,8 @@ class Tile
         self.position[1] + delta[1]
       ]
     end.select { |el| in_bounds?(el) }
+
+    neighbors.map! {|pos| board[pos]}
   end
 
   def in_bounds?(position)
