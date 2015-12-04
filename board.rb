@@ -59,7 +59,9 @@ class Board
   end
 
   def won?
-
+    grid.all? do |row|
+      row.all? { |tile| tile.bomb? ? next : tile.revealed? }
+    end
   end
 
   def lost?
