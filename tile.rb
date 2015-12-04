@@ -36,6 +36,10 @@ class Tile
     neighbors.map! {|pos| board[pos]}
   end
 
+  def neighbor_bomb_count
+    neighbors.count { |tile| tile.bomb == true }
+  end
+
   def in_bounds?(position)
 
     position.all? { |el| el.between?(0, board.size - 1)}
@@ -59,7 +63,7 @@ class Tile
   end
 
   def inspect
-    bomb ? "b" : "_"
+    bomb ? "b" : "#{neighbor_bomb_count}"
   end
 
 
