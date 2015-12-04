@@ -72,10 +72,8 @@ class Tile
     if hidden?
       if flagged?
         "F".g
-      elsif bomb?
-        "B".red
       else
-        "#{neighbor_bomb_count}".gray
+        "_".gray
       end
     else
       if bomb?

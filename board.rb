@@ -52,16 +52,23 @@ class Board
 
   def reveal(pos)
     queue = [self[pos]]
+    previously_seen = []
 
     until queue.empty?
     tile = queue.shift
+    previously_seen << tile
+
+    next if tile.flagged?
 
       if tile.neighbor_bomb_count > 0 || tile.bomb?
         tile.reveal!
+        render
       else
         tile.reveal!
-        queue << tile.neighbors
+        queue += tile.neighbors.reject {|tile| previously_seen.include?(tile)}
+        render
       end
+
     end
 
   end
@@ -84,4 +91,12 @@ class Board
     bomb_positions.any? { |tile| tile.revealed? }
   end
 
+end
+
+if __FILE__ == $PROGRAM_NAME
+  board = Board.new(9)
+  board.render
+
+  print "Pos:"
+  board.reveal(gets.chomp.split(",").to_a.map(&:to_i))
 end
