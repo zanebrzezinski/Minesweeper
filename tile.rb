@@ -15,14 +15,14 @@ class Tile
 
 
   attr_accessor :hidden, :flagged
-  attr_reader :board_size, :position
+  attr_reader :board, :position
 
-  def initialize(position, board_size, bomb = false)
+  def initialize(position, board, bomb = false)
     @bomb = bomb
     @hidden = true
     @flagged = false
     @position = position
-    @board_size = board_size
+    @board = board
   end
 
   def neighbors
@@ -36,7 +36,7 @@ class Tile
 
   def in_bounds?(position)
 
-    position.all? { |el| el.between?(0, board_size - 1)}
+    position.all? { |el| el.between?(0, board.size - 1)}
 
   end
 
