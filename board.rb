@@ -2,11 +2,12 @@ require_relative 'tile'
 
 class Board
 
-  attr_reader :size, :bomb_num, :grid
+  attr_reader :size, :bomb_num, :grid, :bomb_positions
 
   def initialize(size, bomb_num = nil)
     @size = size
     @bomb_num ||= size
+    @bomb_positions = []
     make_grid
   end
 
@@ -30,7 +31,6 @@ class Board
   end
 
   def bomb_locations
-    bomb_positions = []
     until bomb_positions.size == bomb_num
       new_position = [rand(size), rand(size)]
       unless bomb_positions.include?(new_position)
@@ -58,4 +58,12 @@ class Board
     end
   end
 
+  def won?
+
+  end
+
+  def lost?
+
+  end
+  
 end
