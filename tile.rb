@@ -16,8 +16,8 @@ class Tile
 
   attr_accessor :hidden, :flagged
   attr_reader :board_size, :position
-  
-  def initialize(bomb = false, position, board_size)
+
+  def initialize(position, board_size, bomb = false)
     @bomb = bomb
     @hidden = true
     @flagged = false
@@ -27,8 +27,13 @@ class Tile
 
   def neighbors
 
-    neighbors = []
 
+    neighbors = DELTAS.map do |delta|
+                        new_position = [
+                          self.position[0] + delta[0],
+                          self.position[1] + delta[1]
+                        ]
+    end.select { |el| in_bounds?(el) }
 
   end
 
