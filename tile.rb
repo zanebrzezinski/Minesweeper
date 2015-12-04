@@ -54,6 +54,12 @@ class Tile
     @hidden
   end
 
+  def revealed?
+
+    !hidden?
+
+  end
+
   def flagged?
     @flagged
   end

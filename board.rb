@@ -63,7 +63,7 @@ class Board
   end
 
   def lost?
-
+    bomb_positions.any? { |tile| tile.revealed? }
   end
-  
+
 end

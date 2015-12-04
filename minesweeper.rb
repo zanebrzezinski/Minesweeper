@@ -15,7 +15,9 @@ class MineSweeper
   end
 
   def play
-    
+
+    until board.lost? || board.won?
+
   end
 
 end
