@@ -50,6 +50,22 @@ class Board
     grid[y][x] = value
   end
 
+  def reveal(pos)
+    queue = [self[pos]]
+
+    until queue.empty?
+    tile = queue.shift
+
+      if tile.neighbor_bomb_count > 0 || tile.bomb?
+        tile.reveal!
+      else
+        tile.reveal!
+        queue << tile.neighbors
+      end
+    end
+
+  end
+
   def render
     system("clear")
     puts
